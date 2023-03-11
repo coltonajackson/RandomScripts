@@ -1,15 +1,123 @@
 import random
 
+tenses = ["past", "present", "future"]
+
+determiners_singular = ["a", "one", "the"]
+determiners_plural = ["some", "many", "the"]
+
+nouns_singular = [
+    "bird",
+    "boy",
+    "car",
+    "cat",
+    "child",
+    "dog",
+    "girl",
+    "man",
+    "rabbit",
+    "woman",
+]
+nouns_plural = [
+    "birds",
+    "boys",
+    "cars",
+    "cats",
+    "children",
+    "dogs",
+    "girls",
+    "men",
+    "rabbits",
+    "women",
+]
+
+verbs_past = [
+    "drank",
+    "ate",
+    "grew",
+    "laughed",
+    "thought",
+    "ran",
+    "slept",
+    "talked",
+    "walked",
+    "wrote",
+]
+verbs_present_singular = [
+    "drinks",
+    "eats",
+    "grows",
+    "laughs",
+    "thinks",
+    "runs",
+    "sleeps",
+    "talks",
+    "walks",
+    "writes",
+]
+verbs_present_plural = [
+    "drink",
+    "eat",
+    "grow",
+    "laugh",
+    "think",
+    "run",
+    "sleep",
+    "talk",
+    "walk",
+    "write",
+]
+verbs_future = [
+    "will drink",
+    "will eat",
+    "will grow",
+    "will laugh",
+    "will think",
+    "will run",
+    "will sleep",
+    "will talk",
+    "will walk",
+    "will write",
+]
+
+prepositions = [
+    "about",
+    "above",
+    "across",
+    "after",
+    "along",
+    "around",
+    "at",
+    "before",
+    "behind",
+    "below",
+    "beyond",
+    "by",
+    "despite",
+    "except",
+    "for",
+    "from",
+    "in",
+    "into",
+    "near",
+    "of",
+    "off",
+    "on",
+    "onto",
+    "out",
+    "over",
+    "past",
+    "to",
+    "under",
+    "with",
+    "without",
+]
+
 
 def get_determiner(quantity):
     if quantity == 1:
-        words = ["a", "one", "the"]
+        return random.choice(determiners_singular)
     else:
-        words = ["some", "many", "the"]
-
-    # Randomly choose and return a determiner.
-    word = random.choice(words)
-    return word
+        return random.choice(determiners_plural)
 
 
 def get_noun(quantity):
@@ -29,35 +137,9 @@ def get_noun(quantity):
     Return: a randomly chosen noun.
     """
     if quantity == 1:
-        return random.choice(
-            [
-                "bird",
-                "boy",
-                "car",
-                "cat",
-                "child",
-                "dog",
-                "girl",
-                "man",
-                "rabbit",
-                "woman",
-            ]
-        )
+        return random.choice(nouns_singular)
     else:
-        return random.choice(
-            [
-                "birds",
-                "boys",
-                "cars",
-                "cats",
-                "children",
-                "dogs",
-                "girls",
-                "men",
-                "rabbits",
-                "women",
-            ]
-        )
+        return random.choice(nouns_plural)
 
 
 def get_verb(quantity, tense):
@@ -87,66 +169,14 @@ def get_verb(quantity, tense):
     Return: a randomly chosen verb."""
 
     if tense == "past":
-        return random.choice(
-            [
-                "drank",
-                "ate",
-                "grew",
-                "laughed",
-                "thought",
-                "ran",
-                "slept",
-                "talked",
-                "walked",
-                "wrote",
-            ]
-        )
+        return random.choice(verbs_past)
     if tense == "present":
         if quantity == 1:
-            return random.choice(
-                [
-                    "drinks",
-                    "eats",
-                    "grows",
-                    "laughs",
-                    "thinks",
-                    "runs",
-                    "sleeps",
-                    "talks",
-                    "walks",
-                    "writes",
-                ]
-            )
+            return random.choice(verbs_present_singular)
         else:
-            return random.choice(
-                [
-                    "drink",
-                    "eat",
-                    "grow",
-                    "laugh",
-                    "think",
-                    "run",
-                    "sleep",
-                    "talk",
-                    "walk",
-                    "write",
-                ]
-            )
+            return random.choice(verbs_present_plural)
     if tense == "future":
-        return random.choice(
-            [
-                "will drink",
-                "will eat",
-                "will grow",
-                "will laugh",
-                "will think",
-                "will run",
-                "will sleep",
-                "will talk",
-                "will walk",
-                "will write",
-            ]
-        )
+        return random.choice(verbs_future)
     return ""
 
 
@@ -163,40 +193,7 @@ def get_preposition():
     Return: a randomly chosen preposition.
     """
 
-    return random.choice(
-        [
-            "about",
-            "above",
-            "across",
-            "after",
-            "along",
-            "around",
-            "at",
-            "before",
-            "behind",
-            "below",
-            "beyond",
-            "by",
-            "despite",
-            "except",
-            "for",
-            "from",
-            "in",
-            "into",
-            "near",
-            "of",
-            "off",
-            "on",
-            "onto",
-            "out",
-            "over",
-            "past",
-            "to",
-            "under",
-            "with",
-            "without",
-        ]
-    )
+    return random.choice(prepositions)
 
 
 def get_prepositional_phrase(quantity):
@@ -234,34 +231,31 @@ def main():
     quantity = 1
 
     # a.	single	past
-    tense = "past"
     print(
         sentence_template.format(
             get_determiner(quantity).capitalize(),
             get_noun(quantity),
-            get_verb(quantity, tense),
+            get_verb(quantity, tenses[0]),
             get_prepositional_phrase(quantity),
         )
     )
 
     # b.	single	present
-    tense = "present"
     print(
         sentence_template.format(
             get_determiner(quantity).capitalize(),
             get_noun(quantity),
-            get_verb(quantity, tense),
+            get_verb(quantity, tenses[1]),
             get_prepositional_phrase(quantity),
         )
     )
 
     # c.	single	future
-    tense = "future"
     print(
         sentence_template.format(
             get_determiner(quantity).capitalize(),
             get_noun(quantity),
-            get_verb(quantity, tense),
+            get_verb(quantity, tenses[2]),
             get_prepositional_phrase(quantity),
         )
     )
@@ -274,7 +268,7 @@ def main():
         sentence_template.format(
             get_determiner(quantity).capitalize(),
             get_noun(quantity),
-            get_verb(quantity, tense),
+            get_verb(quantity, tenses[0]),
             get_prepositional_phrase(quantity),
         )
     )
@@ -285,7 +279,7 @@ def main():
         sentence_template.format(
             get_determiner(quantity).capitalize(),
             get_noun(quantity),
-            get_verb(quantity, tense),
+            get_verb(quantity, tenses[1]),
             get_prepositional_phrase(quantity),
         )
     )
@@ -296,7 +290,7 @@ def main():
         sentence_template.format(
             get_determiner(quantity).capitalize(),
             get_noun(quantity),
-            get_verb(quantity, tense),
+            get_verb(quantity, tenses[2]),
             get_prepositional_phrase(quantity),
         )
     )
