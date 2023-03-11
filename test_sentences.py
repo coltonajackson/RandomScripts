@@ -37,6 +37,24 @@ def test_get_determiner():
         # is one of the words in the plural_determiners list.
         assert word in plural_determiners
         
+ def test_get_noun():
+    
+    single_nouns=[ "bird","boy","car", "cat", "child", "dog","girl","man", "rabbit","woman",]
+    for _ in range(4):
+        noun= get_noun(1)
+        
+        assert noun in single_nouns    
+
+        
+def test_get_verb():
+    verb_past=["drank", "ate", "grew", "laughed", "thought",
+        "ran", "slept", "talked", "walked", "wrote"]
+    
+    for _ in range (4):
+        verb=get_verb(1)
+        
+        assert verb in verb_past        
+        
 
 
 # Call the main function that is part of pytest so that the
