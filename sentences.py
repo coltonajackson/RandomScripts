@@ -209,9 +209,7 @@ def get_prepositional_phrase(quantity):
             be single or pluaral.
     Return: a prepositional phrase.
     """
-    return "{} {} {}".format(
-        get_preposition(), get_determiner(quantity), get_noun(quantity)
-    )
+    return get_preposition(), get_determiner(quantity), get_noun(quantity)
 
 
 def main():
@@ -226,72 +224,87 @@ def main():
     e.	plural	present
     f.	plural	future"""
 
-    sentence_template = "{} {} {} {}."
+    sentence_template = "{} {} {} {} {} {}."
 
     quantity = 1
 
     # a.	single	past
+    prepositional_phrase = get_prepositional_phrase(quantity)
     print(
         sentence_template.format(
             get_determiner(quantity).capitalize(),
             get_noun(quantity),
             get_verb(quantity, tenses[0]),
-            get_prepositional_phrase(quantity),
+            prepositional_phrase[0],
+            prepositional_phrase[1],
+            prepositional_phrase[2],
         )
     )
 
     # b.	single	present
+    prepositional_phrase = get_prepositional_phrase(quantity)
     print(
         sentence_template.format(
             get_determiner(quantity).capitalize(),
             get_noun(quantity),
             get_verb(quantity, tenses[1]),
-            get_prepositional_phrase(quantity),
+            prepositional_phrase[0],
+            prepositional_phrase[1],
+            prepositional_phrase[2],
         )
     )
 
     # c.	single	future
+    prepositional_phrase = get_prepositional_phrase(quantity)
     print(
         sentence_template.format(
             get_determiner(quantity).capitalize(),
             get_noun(quantity),
             get_verb(quantity, tenses[2]),
-            get_prepositional_phrase(quantity),
+            prepositional_phrase[0],
+            prepositional_phrase[1],
+            prepositional_phrase[2],
         )
     )
 
     quantity = 0
 
     # d.	plural	past
-    tense = "past"
+    prepositional_phrase = get_prepositional_phrase(quantity)
     print(
         sentence_template.format(
             get_determiner(quantity).capitalize(),
             get_noun(quantity),
             get_verb(quantity, tenses[0]),
-            get_prepositional_phrase(quantity),
+            prepositional_phrase[0],
+            prepositional_phrase[1],
+            prepositional_phrase[2],
         )
     )
 
     # e.	plural	present
-    tense = "present"
+    prepositional_phrase = get_prepositional_phrase(quantity)
     print(
         sentence_template.format(
             get_determiner(quantity).capitalize(),
             get_noun(quantity),
             get_verb(quantity, tenses[1]),
-            get_prepositional_phrase(quantity),
+            prepositional_phrase[0],
+            prepositional_phrase[1],
+            prepositional_phrase[2],
         )
     )
 
     # f.	plural	future
-    tense = "future"
+    prepositional_phrase = get_prepositional_phrase(quantity)
     print(
         sentence_template.format(
             get_determiner(quantity).capitalize(),
             get_noun(quantity),
             get_verb(quantity, tenses[2]),
-            get_prepositional_phrase(quantity),
+            prepositional_phrase[0],
+            prepositional_phrase[1],
+            prepositional_phrase[2],
         )
     )
 
