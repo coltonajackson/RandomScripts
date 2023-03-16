@@ -3,6 +3,7 @@ from formula import parse_formula
 # Indexes for inner lists in the periodic table
 NAME_INDEX = 0
 ATOMIC_MASS_INDEX = 1
+
 # Indexes for inner lists in a symbol_quantity_list
 SYMBOL_INDEX = 0
 QUANTITY_INDEX = 1
@@ -31,10 +32,10 @@ def compute_molar_mass(symbol_quantity_list, periodic_table_dict):
     # compound symbol_quantity_list:
     for item in symbol_quantity_list:
         # Separate the inner list into symbol and quantity.
-        symbol = item[0]
-        quantity = item[1]
+        symbol = item[SYMBOL_INDEX]
+        quantity = item[QUANTITY_INDEX]
         # Get the atomic mass for the symbol from the dictionary.
-        atomic_mass = periodic_table_dict[symbol][1]
+        atomic_mass = periodic_table_dict[symbol][ATOMIC_MASS_INDEX]
         # Multiply the atomic mass by the quantity.
         total_atomic_mass = atomic_mass * quantity
         # Add the product into the total molar mass.
