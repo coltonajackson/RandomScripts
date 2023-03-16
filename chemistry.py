@@ -174,9 +174,9 @@ def main():
     num_moles = mass_chem_sample / total_molar_mass
 
     # Print the molar mass.
-    print(f"{total_molar_mass} grams/mole")
+    print("{:.5f} grams/mole".format(total_molar_mass))
     # Print the number of moles.
-    print(f"{num_moles} moles")
+    print("{:.5f} moles".format(num_moles))
 
 
 if __name__ == "__main__":
