@@ -110,7 +110,8 @@ def main():
     mass_chem_sample = input("Enter mass chemical sample in grams: ")
     periodic_table = make_periodic_table(chemical_formula)
 
-    print(periodic_table, mass_chem_sample)
+    for p in periodic_table:
+        print(p[1], p[2])
 
 
 if __name__ == "__main__":
