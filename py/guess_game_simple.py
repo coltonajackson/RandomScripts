@@ -16,25 +16,28 @@ It took you 3 guesses.
 print("Welcome to the word guessing game!\n")
 
 answer = input("What is the word? ")
-hint_split = ["_" for c in answer]
+#hint_split = ["_" for c in answer]
 
 guess = ""
-guesses = []
+guesses = 0
+hint = ""
+for char in answer:
+        hint += "_"
 
 while guess != answer:
-    hint = "".join([c for c in hint_split])
     print("Your hint is:", hint)
     guess = input("What is your guess? ")
-    guess_split = list(guess)
-    answer_split = list(answer)
-    if len(guess_split) == len(answer_split):
-        guesses.append(guess)
-        for idx, char in enumerate(guess):
-            if guess_split[idx] == answer_split[idx]:
-                hint_split[idx] = guess_split[idx]
-                hint = "".join([c for c in hint_split])
+    if len(guess) == len(answer):
+        guesses += 1
+        new_hint = ""
+        for char in enumerate(guess):
+            if char[1] == answer[char[0]]:
+                new_hint += char[1]
+            else:
+                new_hint += hint[char[0]]
+        hint = new_hint
     else:
         print("Not a valid guess. Please guess again.")
 
 print("\nCongratulations! You guessed it!")
-print("It took you {0} guesses.".format(len(guesses)))
+print("It took you {0} guesses.".format(guesses))
